@@ -1,4 +1,3 @@
-  
 body{
     margin: 0;
     height: 100%;
@@ -154,6 +153,8 @@ select{
     border: none;
     background-color: #f5f5f5;
     margin-right: 10px;
+    border: 1px solid #707070;
+    margin-left: 15px;
 }
 
 .cancelButton{
@@ -202,6 +203,7 @@ select{
         flex-direction: column-reverse;
         align-items: flex-start;
     }
+
     .profile-radio-content{
         flex-flow: wrap;
     }
