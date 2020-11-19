@@ -20,8 +20,14 @@ function salaryInput(){
             return this._name;
         }
         set name(name){
-                this._name = name;
+            let nameRegex =RegExp('^[A-Z]{1}[a-z]{3,}$');
+            if(nameRegex.test(name))
+            this._name = name;
+            else {
+            alert("Name is incorrect!");
+            throw "Name is Incorrect!! "+name;
            }
+        }
         get profile(){
             return this._profile;
         }
@@ -51,7 +57,15 @@ function salaryInput(){
             return this._startDate;
         }
         set startDate(startDate){
-            this._startDate=startDate;
+            if(startDate.getMonth()<=(new Date()).getMonth()
+            &&startDate.getDay()<=(new Date()).getDay()
+            &&startDate.getFullYear()<=(new Date()).getFullYear())
+             this._startDate = startDate;
+            else
+           { 
+               alert("Start Date is invalid."); 
+                throw "Invalid Start date "+startDate;
+            }
         }
         get notes(){
             return this._notes;
@@ -89,14 +103,14 @@ function salaryInput(){
         }
         
         var salary = document.getElementById("salary").value;
-       var day = document.getElementById("day").value;
-       var month = document.getElementById("month").value;
-       var year = document.getElementById("year").value;
+       const day = document.getElementById("day").value;
+       const month = document.getElementById("month").value;
+       const year = document.getElementById("year").value;
         var note = document.getElementById("notes").value;
-        var startDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-        
+        let startDate =new Date(year+"-"+month+"-"+day);
+    
        const employeepayrollData = new EmployeePayrollData(name, salary, gender,startDate, departments, profile, note);
       
        alert("Thanks! Your form is submitted successfully!" + "\n "+employeepayrollData.toString());
-       console.log("thanks for adding data!");
+       console.log(employeepayrollData);
       }
